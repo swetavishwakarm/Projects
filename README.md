@@ -1,1 +1,1 @@
-Calculator Project in Java
+Java Projects
