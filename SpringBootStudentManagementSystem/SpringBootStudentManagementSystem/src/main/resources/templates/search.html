@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Search Student / Department</title>
+<link rel="stylesheet" href="style.css" th:href="@{style.css}" />
+<style>
+.container {
+    margin: 0px auto 0px auto;
+    text-align: center;
+}
+
+
+.product-card {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-title {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+.product-price {
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.add-to-cart-btn,
+.view-btn {
+    background-color: cornflowerblue;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.25s ease;
+}
+
+.add-to-cart-btn:hover,
+.view-btn:hover { 
+    opacity: 0.8;
+}
+
+</style>
+
+<th:block  th:include="header" />
+</head>
+<body>
+
+	<div align="center">
+		<h1>****Search Student/ Department****</h1>
+		<br />
+
+		<form action="#" th:action="@{/search-student}" method="post" th:object="${student}">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Enter Student Id :</td>
+					<td><input type="text" th:field="*{id}" />
+					<td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><button type="submit">Search</button></td>
+				</tr>
+
+
+			</table>
+		</form>
+		
+		<div  align="center" th:if="${studentResult}">
+		<h1> Student Details </h1>
+		   Name : <h2  th:text="${studentResult.name}"></h2>
+		   Collage Name: 		  <h4  th:text="${studentResult.clgname}"></h4>
+		  
+		  		   City: <h4  th:text="${studentResult.city}"></h4>
+		  		   Phone Number : <h4  th:text="${studentResult.phoneno}"></h4>
+		  		    Address : <h4  th:text="${studentResult.address}"></h4>
+		  
+			<div class="container">
+  <div class="student-card" >
+    <div class="student-details">
+    
+      <h4 class="student-name">$10</h4>
+      <button class="add-to-list-btn">Add to List</button>
+      <button class="view-btn">View</button>
+    </div>
+  </div>
+</div>
+			
+		</div>
+	</div>
+
+
+		       <a href="/dashboard">*Back*</a> <br /> <br />
+	
+	<th:block th:include="footer" />
+</body>
+</html>
